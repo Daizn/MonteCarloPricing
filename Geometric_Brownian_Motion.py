@@ -6,4 +6,9 @@ t = 1 # time
 steps = 252 # trading days
 dt = t / steps # time increment
 Z = np.random.normal(0,1, steps) # generate random numbers from standard normal distribution
-St = s0 * np.exp((mu -0.5 * sigma ** 2) * dt + sigma * Z * dt ** 0.5) # final stock price
+current_price = s0
+price_list = []
+for i in Z:
+    current_price = current_price * np.exp((mu -0.5 * sigma ** 2) * dt + sigma * i * np.sqrt(dt)) # final stock price
+    price_list.append(current_price)
+print(price_list)
